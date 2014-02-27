@@ -2,9 +2,9 @@
 
 return array(
 
-	"boomPath" => app_path()."/boom",
-	"sourcePath" => app_path()."/assets",
-	"targetPath" => public_path()."/assets",
+	"boom" => app_path()."/boom",
+	"source" => app_path()."/assets",
+	"target" => public_path()."/assets",
 	
 	"bower" => array(
 		"dependencies" => array()

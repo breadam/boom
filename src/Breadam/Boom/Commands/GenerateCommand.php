@@ -12,7 +12,7 @@ class GenerateCommand extends Command{
 	
 	public function getOptions(){
 		return array(
-			array("o","",InputOption::VALUE_NONE,"overwrite if file(s) exist(s)"),
+			array("overwrite","o",InputOption::VALUE_NONE,"overwrite if file(s) exist(s)"),
 			array("npm","",InputOption::VALUE_NONE,"generate package.json"),
 			array("bower","",InputOption::VALUE_NONE,"generate bower.json"),
 			array("gulp","",InputOption::VALUE_NONE,"generate gulpfile.js"),
@@ -25,7 +25,7 @@ class GenerateCommand extends Command{
 	public function fire(){
 		
 		$o = $this->option();
-		$overwrite = $this->option("o");
+		$overwrite = $this->option("overwrite");
 		$isset = false;
 		
 		if($o["npm"]){

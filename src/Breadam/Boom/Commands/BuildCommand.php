@@ -14,8 +14,7 @@ class BuildCommand extends Command{
 			array("css","",InputOption::VALUE_NONE,"gulp css"),
 			array("coffee","",InputOption::VALUE_NONE,"gulp coffee"),
 			array("scss","",InputOption::VALUE_NONE,"gulp scss"),
-			array("less","",InputOption::VALUE_NONE,"gulp less"),
-			array("img","",InputOption::VALUE_NONE,"gulp img"),
+			array("less","",InputOption::VALUE_NONE,"gulp less")
 		);
 	}
 	
@@ -57,13 +56,6 @@ class BuildCommand extends Command{
 			$this->info("Building less");
 			chdir(app("boom")->boomPath());
 			shell_exec("gulp less");
-		}
-		
-		if($o["img"]){
-			$isset = true;
-			$this->info("Building img");
-			chdir(app("boom")->boomPath());
-			shell_exec("gulp imgs");
 		}
 		
 		if($isset === false){

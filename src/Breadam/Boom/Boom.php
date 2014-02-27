@@ -32,7 +32,7 @@ class Boom{
 		$content = View::make("boom::bower",array(
 			"dependencies" => $this->toJson($this->config("bower.dependencies"))
 		));
-		$this->createFile($this->boomPath(),"bower.json",$content,$overwrite);
+		$this->createFile($this->boom(),"bower.json",$content,$overwrite);
 	}
 	
 	public function generateGulp($overwrite = false){
@@ -45,12 +45,12 @@ class Boom{
 				"scss" => $this->scssConfig(),
 			))
 		));
-		$this->createFile($this->boomPath(),"gulpfile.js",$content,$overwrite);
+		$this->createFile($this->boom(),"gulpfile.js",$content,$overwrite);
 	}
 	
 	public function generateNpm($overwrite = false){
 		$content = View::make("boom::package");
-		$this->createFile($this->boomPath(),"package.json",$content,$overwrite);
+		$this->createFile($this->boom(),"package.json",$content,$overwrite);
 		
 	}
 	
@@ -59,23 +59,23 @@ class Boom{
 		$imports = $this->config("assets.$asset.imports");
 		if(isset($imports)){
 			$content = View::make("boom::import",array(
-				"boomPath" => $this->boomPath(),
+				"boom" => $this->boom(),
 				"imports" => $imports
 			));
-			$this->createFile($this->sourcePath($asset),"master.$asset",$content,$overwrite);
+			$this->createFile($this->source($asset),"master.$asset",$content,$overwrite);
 		}
 	}
 	
-	public function boomPath($sub = null){
-		return $this->path($this->config("boomPath"),$sub);
+	public function boom($sub = null){
+		return $this->path($this->config("boom"),$sub);
 	}
 	
-	public function sourcePath($sub = null){
-		return $this->path($this->config("sourcePath"),$sub);
+	public function source($sub = null){
+		return $this->path($this->config("source"),$sub);
 	}
 	
-	public function targetPath($sub = null){
-		return $this->path($this->config("targetPath"),$sub);
+	public function target($sub = null){
+		return $this->path($this->config("target"),$sub);
 	}
 	
 	private function jsConfig(){
@@ -85,16 +85,16 @@ class Boom{
 		$includes = array();
 		
 		foreach($imports as $import){
-			$includes[] = $this->boomPath("bower_components/$import");
+			$includes[] = $this->boom("bower_components/$import");
 		}
 		
 		foreach($order as $file){
-			$includes[] = $this->sourcePath($this->config("assets.js.source")."/$file");
+			$includes[] = $this->source($this->config("assets.js.source")."/$file");
 		}
 		
 		return array(
-			"source" => $this->sourcePath($this->config("assets.js.source")),
-			"target" => $this->targetPath($this->config("assets.js.target")),
+			"source" => $this->source($this->config("assets.js.source")),
+			"target" => $this->target($this->config("assets.js.target")),
 			"order" => $includes
 		);
 	}
@@ -104,34 +104,34 @@ class Boom{
 		$includes = array();
 		
 		foreach($imports as $import){
-			$includes[] = $this->boomPath("bower_components/$import");
+			$includes[] = $this->boom("bower_components/$import");
 		}
 		
 		return array(
-			"source" => $this->sourcePath($this->config("assets.coffee.source")),
-			"target" => $this->sourcePath($this->config("assets.js.source")."/".$this->config("assets.coffee.target")),
+			"source" => $this->source($this->config("assets.coffee.source")),
+			"target" => $this->source($this->config("assets.js.source")."/".$this->config("assets.coffee.target")),
 			"order" => $includes
 		);
 	}
 	
 	private function cssConfig(){
 		return array(
-			"source" => $this->sourcePath($this->config("assets.css.source")),
-			"target" => $this->targetPath($this->config("assets.css.target")),
+			"source" => $this->source($this->config("assets.css.source")),
+			"target" => $this->target($this->config("assets.css.target")),
 		);
 	}
 	
 	private function scssConfig(){
 		return array(
-			"source" => $this->sourcePath($this->config("assets.scss.source")),
-			"target" => $this->sourcePath($this->config("assets.scss.target")),
+			"source" => $this->source($this->config("assets.scss.source")),
+			"target" => $this->source($this->config("assets.scss.target")),
 		);
 	}
 	
 	private function lessConfig(){
 		return array(
-			"source" => $this->sourcePath($this->config("assets.less.source")),
-			"target" => $this->sourcePath($this->config("assets.less.target")),
+			"source" => $this->source($this->config("assets.less.source")),
+			"target" => $this->source($this->config("assets.less.target")),
 		);
 	}
 	
@@ -140,9 +140,9 @@ class Boom{
 	}
 	
 	private function createDirs(){
-		$this->createDir($this->config("boomPath"));
-		$this->createDir($this->config("sourcePath"));
-		$this->createDir($this->config("targetPath"));
+		$this->createDir($this->config("boom"));
+		$this->createDir($this->config("source"));
+		$this->createDir($this->config("target"));
 	}
 	
 	private function config($key){
