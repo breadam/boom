@@ -124,14 +124,14 @@ class Boom{
 	private function scssConfig(){
 		return array(
 			"source" => $this->source($this->config("assets.scss.source")),
-			"target" => $this->source($this->config("assets.scss.target")),
+			"target" => $this->source($this->config("assets.css.source")."/".$this->config("assets.scss.target")),
 		);
 	}
 	
 	private function lessConfig(){
 		return array(
 			"source" => $this->source($this->config("assets.less.source")),
-			"target" => $this->source($this->config("assets.less.target")),
+			"target" => $this->source($this->config("assets.css.source")."/".$this->config("assets.less.target")),
 		);
 	}
 	
