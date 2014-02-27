@@ -14,7 +14,7 @@ class WatchCommand extends Command{
 		
 		$this->info("Watching for changes");
 		
-		chdir(app("boom")->boomPath());
+		chdir(app("boom")->boom());
 		shell_exec("gulp watch");
 	}
 }

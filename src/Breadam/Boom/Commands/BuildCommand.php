@@ -26,42 +26,42 @@ class BuildCommand extends Command{
 		if($o["js"]){
 			$isset = true;
 			$this->info("Building js");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp js");
 		}
 		
 		if($o["css"]){
 			$isset = true;
 			$this->info("Building css");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp css");
 		}
 		
 		if($o["coffee"]){
 			$isset = true;
 			$this->info("Building coffee");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp coffee");
 		}
 		
 		if($o["scss"]){
 			$isset = true;
 			$this->info("Building scss");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp scss");
 		}
 		
 		if($o["less"]){
 			$isset = true;
 			$this->info("Building less");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp less");
 		}
 		
 		if($isset === false){
 		
 			$this->info("Building default");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("gulp");
 
 		}

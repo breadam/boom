@@ -25,14 +25,14 @@ class UpdateCommand extends Command{
 		if($o["npm"]){
 			$isset = true;
 			$this->info("Updating Npm packages");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("npm update");
 		}
 		
 		if($o["bower"]){
 			$isset = true;
 			$this->info("Updating Bower packages");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("bower update");
 		}
 		
@@ -40,7 +40,7 @@ class UpdateCommand extends Command{
 		
 			$this->info("Updating all packages");
 			
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("npm update");
 			shell_exec("bower update");
 

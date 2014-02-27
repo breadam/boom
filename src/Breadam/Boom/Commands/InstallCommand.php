@@ -25,14 +25,14 @@ class InstallCommand extends Command{
 		if($o["npm"]){
 			$isset = true;
 			$this->info("Installing Npm packages");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("npm install");
 		}
 		
 		if($o["bower"]){
 			$isset = true;
 			$this->info("Installing Bower packages");
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("bower install");
 		}
 		
@@ -40,7 +40,7 @@ class InstallCommand extends Command{
 		
 			$this->info("Installing all packages");
 			
-			chdir(app("boom")->boomPath());
+			chdir(app("boom")->boom());
 			shell_exec("npm install");
 			shell_exec("bower install");
 
