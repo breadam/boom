@@ -1,12 +1,25 @@
 {
     "name": "breadam/boom",
-    "description": "",
-    "authors": [
+    "description": "Laravel asset management",
+		"licence" : "MIT",
+		"authors": [
         {
             "name": "breadam",
             "email": "bilgi@breadam.com"
         }
     ],
+		"keywords" : [
+			"laravel",
+			"asset management",
+			"breadam",
+			"gulp",
+			"bower",
+			"css",
+			"scss",
+			"coffeescript",
+			"js",
+			"less"
+		],
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.1.*"
