@@ -1,7 +1,7 @@
 {
     "name": "breadam/boom",
     "description": "Laravel asset management",
-		"licence" : "MIT",
+		"license" : "MIT",
 		"authors": [
         {
             "name": "breadam",
