@@ -1,6 +1,6 @@
 
 @foreach($imports as $import)
   
-	@import "{{ $boomPath }}/bower_components/{{ $import }}";
+	@import "{{ $boom }}/bower_components/{{ $import }}";
 	
 @endforeach
