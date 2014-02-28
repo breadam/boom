@@ -30,7 +30,7 @@ gulp.task("scss",function(){
 						 .pipe(gulp.dest(assets.scss.target));
 });
 
-gulp.task("js",function(){
+gulp.task("js",["coffee"],function(){
 	
 	assets.js.order.push(assets.js.source+"/**/*.js");
 	
@@ -42,7 +42,7 @@ gulp.task("js",function(){
 						 .pipe(gulp.dest(assets.js.target));
 });
 
-gulp.task("css",function(){
+gulp.task("css",["scss","less"],function(){
 	return gulp.src(assets.css.source+"/**/*.css")
 						 .pipe(concat("boom.css"))
 						 .pipe(gulp.dest(assets.css.target))
