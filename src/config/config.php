@@ -7,7 +7,9 @@ return array(
 	"target" => public_path()."/assets",
 	
 	"bower" => array(
-		"dependencies" => array()
+		"dependencies" => array(
+			
+		)
 	),
 	
 	"assets" => array(

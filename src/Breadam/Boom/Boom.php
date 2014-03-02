@@ -139,12 +139,6 @@ class Boom{
 		return json_encode($arr);
 	}
 	
-	private function createDirs(){
-		$this->createDir($this->config("boom"));
-		$this->createDir($this->config("source"));
-		$this->createDir($this->config("target"));
-	}
-	
 	private function config($key){
 		return $this->config->get("boom::config.$key");
 	}
@@ -159,12 +153,14 @@ class Boom{
 	
 	private function createFile($path,$file,$content,$overwrite = false){
 		
-		if($overwrite === false && $this->filesystem->exists($path)){
+		$filePath = "$path/$file";
+		
+		if($overwrite === false && $this->filesystem->exists($filePath)){
 			return;
 		}
 		
 		$this->createDir($path);
-		$this->filesystem->put("$path/$file",$content);
+		$this->filesystem->put($filePath,$content);
 	}
 	
 	private function createDir($path){
